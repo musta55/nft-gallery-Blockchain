@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NFTCard } from "./components/nftCard";
-import {Pagination}    from "./components/Pagination"
+import {Pagination} from "./components/Pagination"
 
 
 const Home = () => {
@@ -9,13 +9,17 @@ const Home = () => {
   const [NFTs, setNFTs] = useState([]);
   const [fetchForCollection, setFetchForCollection] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [nftPerPage] = useState(6);
+  const [nftPerpage] = useState(6);
 
-  const indexOfLastNFT = currentPage * nftPerPage;
-  const indexOfFirstNFT = indexOfLastNFT - nftPerPage;
+  const indexOfLastNFT = currentPage * nftPerpage;
+  const indexOfFirstNFT = indexOfLastNFT - nftPerpage;
   const currentNFTs = NFTs.slice(indexOfFirstNFT,indexOfLastNFT);
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    console.log("p")
+    setCurrentPage(pageNumber);
+  }
+
 
 
   const fetchNFTs = async () => {
@@ -123,7 +127,7 @@ const Home = () => {
 
 
       </div>
-      <Pagination nftPerPage= {nftPerPage} totalNfts={NFTs.length} paginate={paginate}></Pagination>
+      <Pagination nftPerpage= {nftPerpage} totalNfts={NFTs.length} paginate={paginate} ></Pagination>
      
     </div>
   );
